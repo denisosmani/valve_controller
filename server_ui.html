@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>ESP8266 WebSocket Client</title>
+    <style>
+      .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: 10px auto;
+      }
+      #wsStatusCircle {
+        background-color: black;  /* Default color for WebSocket OFF */
+      }
+      .valveCircle {
+        width: 30px;
+        height: 30px;
+        margin: 5px auto;
+        border-radius: 50%;
+      }
+      .valveON { background-color: red; }
+      .valveOFF { background-color: black; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table, th, td {
+        border: 1px solid black;
+        font-size: 32px;
+      }
+      th, td {
+        padding: 16px;
+        text-align: center;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 32px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Agro Sera Osmani Vajnik&euml;</h1>
+    <h3>Statusi i aplikacionit:</h3>
+    <div id="wsStatusCircle" class="circle"></div>
+
+    <h3>Statusi i ventillave:</h3>
+    <table>
+      <tr>
+        <th>Nr. ventillit</th>
+        <th>Statusi</th>
+        <th>Kontrollo</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><div id="valve0Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(0)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><div id="valve1Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(1)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><div id="valve2Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(2)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><div id="valve3Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(3)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><div id="valve4Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(4)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><div id="valve5Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(5)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><div id="valve6Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(6)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><div id="valve7Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(7)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><div id="valve8Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(8)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><div id="valve9Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(9)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><div id="valve10Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(10)">Ndrysho</button></td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td><div id="valve11Status" class="valveCircle valveOFF"></div></td>
+        <td><button onclick="toggleValve(11)">Ndrysho</button></td>
+      </tr>
+    </table>
+    
+    <h3 class="auto-control" style="font-size: 32px;">Kontrolli Automatik</h3>
+
+    <form id="auto-control-form">
+    <label for="duration" style="font-size: 32px;">Koha (minuta): </label>
+    <input style="font-size: 32px; width: 120px;" type="number" id="duration" step="0.001" min="0.001" placeholder="0.5, 1, 2 ..." required>
+    <button type="button" onclick="startAutoControl()">START</button>
+    <button type="button" onclick="stopAutoControl()">STOP</button>
+</form>
+
+<script src="server.js"></script>
+  
+</body>
+</html>
